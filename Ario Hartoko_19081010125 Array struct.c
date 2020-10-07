@@ -4,7 +4,7 @@
 
 typedef struct biodata {
 	char nama[30];
-	char alamat[50];
+	char alamat[100];
 	char lahir[20];
 	char email[50];
 	char npm[20];
@@ -12,7 +12,7 @@ typedef struct biodata {
 	char universitas[50];
 }mahasiswa;
 
-int i=0,j,banyak=0;
+int i,j,banyak=0;
 char lagi;
 mahasiswa mhs[50];
 
@@ -39,7 +39,9 @@ int main (){
 				update();
 			}
 			else{
-				printf("Mohon maaf belum ada data :)\n");
+				printf("Mohon maaf belum ada data :)\n\n");
+				system("pause");
+				system("cls");
 			}
 			break;
 		case 3:
@@ -47,7 +49,9 @@ int main (){
 				hapus();
 			}
 			else{
-				printf("Mohon maaf belum ada data :)\n");
+				printf("Mohon maaf belum ada data :)\n\n");
+				system("pause");
+				system("cls");
 			}
 			break;
 		case 4:
@@ -58,7 +62,9 @@ int main (){
 				system("cls");
 			}
 			else{
-				printf("Mohon maaf belum ada data :)\n");
+				printf("Mohon maaf belum ada data :)\n\n");
+				system("pause");
+				system("cls");
 			}
 			break;
 		case 5:
@@ -67,6 +73,8 @@ int main (){
 			return 0;
 		default:
 			printf("Mohon maaf menu pilihan tersebut tidak ada :(\n\n");
+			system("pause");
+			system("cls");
 	}
 	main();
 	return 0;
@@ -77,10 +85,10 @@ int input(){
 	scanf("%d",&banyak);
 	fflush(stdin);
 	system("cls");
-	for(i=1;i<=banyak;i++){
+	for(i=0;i<banyak;i++){
 		printf("SELAMAT DATANG DALAM PROGRAM BIODATA MAHASISWA!!!!!\n\n");
 		printf("-----------------------------------------------------------------------------------------------------\n\n");
-		printf("Biodata mahasiswa ke-%d\n\n", i);
+		printf("Biodata mahasiswa ke-%d\n\n", i+1);
 		printf("Masukkan nama\t\t: ");
 		gets(mhs[i].nama);
 		printf("Masukkan tanggal lahir\t: ");
@@ -107,7 +115,7 @@ int update(){
 	fflush(stdin);
 	printf("SELAMAT DATANG DALAM PROGRAM BIODATA MAHASISWA!!!!!\n\n");
 	printf("-----------------------------------------------------------------------------------------------------\n\n");
-	printf("Biodata mahasiswa ke-%d\n\n", i);
+	printf("Biodata mahasiswa ke-%d\n\n", i+1);
 	printf("Masukkan nama\t\t: ");
 	gets(mhs[i].nama);
 	printf("Masukkan tanggal lahir\t: ");
@@ -131,22 +139,22 @@ int hapus(){
 	display();
 	printf("Silahkan pilih biodata ke berapa yang ingin dihapus : ");
 	scanf("%d", &i);
-	for(i;i<=banyak;i++){
-		strcpy(mhs[i].nama,mhs[i+1].nama);
-		strcpy(mhs[i].alamat,mhs[i+1].alamat);
-		strcpy(mhs[i].lahir,mhs[i+1].lahir);
-		strcpy(mhs[i].email,mhs[i+1].lahir);
-		strcpy(mhs[i].npm,mhs[i+1].npm);
-		strcpy(mhs[i].jurusan,mhs[i+1].jurusan);
-		strcpy(mhs[i].universitas,mhs[i+1].universitas);
+	for(i-1;i<banyak;i++){
+		strcpy(mhs[i-1].nama,mhs[i].nama);
+		strcpy(mhs[i-1].alamat,mhs[i].alamat);
+		strcpy(mhs[i-1].lahir,mhs[i].lahir);
+		strcpy(mhs[i-1].email,mhs[i].lahir);
+		strcpy(mhs[i-1].npm,mhs[i].npm);
+		strcpy(mhs[i-1].jurusan,mhs[i].jurusan);
+		strcpy(mhs[i-1].universitas,mhs[i].universitas);
 	}
 	banyak=banyak-1;
 	system("cls");
 }
 
 int display(){
-	for(i=1;i<=banyak;i++){
-		printf("Biodata mahasiswa ke-%d\n",i);
+	for(i=0;i<banyak;i++){
+		printf("Biodata mahasiswa ke-%d\n",i+1);
 		printf("Nama\t\t: %s\n", mhs[i].nama);
 		printf("Alamat\t\t: %s\n", mhs[i].alamat);
 		printf("Tanggal lahir\t: %s\n", mhs[i].lahir);
